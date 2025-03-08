@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remote Desktop Client</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+        }
+        .remote-screen {
+            width: 100%;
+            height: 300px;
+            background: #000;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+            border-radius: 5px;
+        }
+        .connect-btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .disconnect-btn {
+            background: #dc3545;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Remote Desktop Client</h2>
+        <input type="text" id="remoteId" placeholder="Enter Remote PC ID">
+        <button class="connect-btn" onclick="connectRemote()">Connect</button>
+        <div class="remote-screen" id="screen">
+            Remote Desktop Screen Will Appear Here
+        </div>
+        <button class="disconnect-btn" onclick="disconnectRemote()">Disconnect</button>
+    </div>
+
+    <script>
+        function connectRemote() {
+            let remoteId = document.getElementById("remoteId").value;
+            if (remoteId) {
+                document.getElementById("screen").innerText = "Connecting to " + remoteId + "...";
+                // Here you need to implement WebRTC or RDP connection
+                setTimeout(() => {
+                    document.getElementById("screen").innerText = "Connected to " + remoteId;
+                }, 2000);
+            } else {
+                alert("Please enter a valid Remote PC ID");
+            }
+        }
+
+        function disconnectRemote() {
+            document.getElementById("screen").innerText = "Remote Desktop Screen Will Appear Here";
+            // Here you need to implement WebRTC or RDP disconnection
+            alert("Disconnected from Remote PC");
+        }
+    </script>
+
+</body>
+</html>
